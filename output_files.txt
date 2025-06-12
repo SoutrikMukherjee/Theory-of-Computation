@@ -1,0 +1,213 @@
+=== Lexical Analysis ===
+Generated 331 tokens
+
+=== Syntax Analysis ===
+AST generated successfully
+
+=== Semantic Analysis ===
+No semantic errors found
+
+=== Code Generation ===
+Generated 183 instructions
+
+=== Bytecode ===
+   0: JMP skip_func_0
+   1: LABEL factorial
+   2: LOAD 0
+   3: PUSH 1
+   4: LE
+   5: JZ else_0
+   6: PUSH 1
+   7: RET
+   8: JMP endif_0
+   9: LABEL else_0
+  10: LOAD 0
+  11: LOAD 0
+  12: PUSH 1
+  13: SUB
+  14: CALL factorial
+  15: MUL
+  16: RET
+  17: LABEL endif_0
+  18: LABEL skip_func_0
+  19: JMP skip_func_1
+  20: LABEL fibonacci
+  21: LOAD 0
+  22: PUSH 1
+  23: LE
+  24: JZ else_1
+  25: LOAD 0
+  26: RET
+  27: JMP endif_1
+  28: LABEL else_1
+  29: LOAD 0
+  30: PUSH 1
+  31: SUB
+  32: CALL fibonacci
+  33: LOAD 0
+  34: PUSH 2
+  35: SUB
+  36: CALL fibonacci
+  37: ADD
+  38: RET
+  39: LABEL endif_1
+  40: LABEL skip_func_1
+  41: JMP skip_func_2
+  42: LABEL arithmetic_test
+  43: PUSH 10
+  44: STORE 0
+  45: PUSH 3
+  46: STORE 1
+  47: LOAD 0
+  48: LOAD 1
+  49: ADD
+  50: STORE 2
+  51: LOAD 0
+  52: LOAD 1
+  53: SUB
+  54: STORE 3
+  55: LOAD 0
+  56: LOAD 1
+  57: MUL
+  58: STORE 4
+  59: LOAD 0
+  60: LOAD 1
+  61: DIV
+  62: STORE 5
+  63: LOAD 0
+  64: LOAD 1
+  65: MOD
+  66: STORE 6
+  67: LOAD 2
+  68: LOAD 3
+  69: ADD
+  70: LOAD 4
+  71: ADD
+  72: LOAD 5
+  73: ADD
+  74: LOAD 6
+  75: ADD
+  76: RET
+  77: LABEL skip_func_2
+  78: JMP skip_func_3
+  79: LABEL control_flow_test
+  80: PUSH 0
+  81: STORE 0
+  82: PUSH 5
+  83: STORE 1
+  84: LOAD 1
+  85: PUSH 3
+  86: GT
+  87: JZ else_2
+  88: LOAD 0
+  89: PUSH 10
+  90: ADD
+  91: STORE 0
+  92: JMP endif_2
+  93: LABEL else_2
+  94: LOAD 0
+  95: PUSH 5
+  96: ADD
+  97: STORE 0
+  98: LABEL endif_2
+  99: PUSH 0
+ 100: STORE 2
+ 101: LABEL while_start_0
+ 102: LOAD 2
+ 103: PUSH 3
+ 104: LT
+ 105: JZ while_end_0
+ 106: LOAD 0
+ 107: LOAD 2
+ 108: ADD
+ 109: STORE 0
+ 110: LOAD 2
+ 111: PUSH 1
+ 112: ADD
+ 113: STORE 2
+ 114: JMP while_start_0
+ 115: LABEL while_end_0
+ 116: PUSH 0
+ 117: STORE 3
+ 118: LABEL for_start_0
+ 119: LOAD 3
+ 120: PUSH 3
+ 121: LT
+ 122: JZ for_end_0
+ 123: LOAD 0
+ 124: LOAD 3
+ 125: ADD
+ 126: STORE 0
+ 127: LOAD 3
+ 128: PUSH 1
+ 129: ADD
+ 130: STORE 3
+ 131: JMP for_start_0
+ 132: LABEL for_end_0
+ 133: LOAD 0
+ 134: RET
+ 135: LABEL skip_func_3
+ 136: JMP skip_func_4
+ 137: LABEL nested_calls
+ 138: LOAD 0
+ 139: CALL factorial
+ 140: STORE 0
+ 141: LOAD 0
+ 142: CALL fibonacci
+ 143: STORE 1
+ 144: LOAD 0
+ 145: LOAD 1
+ 146: ADD
+ 147: RET
+ 148: LABEL skip_func_4
+ 149: JMP skip_func_5
+ 150: LABEL main
+ 151: PUSH 5
+ 152: CALL factorial
+ 153: STORE 0
+ 154: PUSH 6
+ 155: CALL fibonacci
+ 156: STORE 1
+ 157: CALL arithmetic_test
+ 158: STORE 2
+ 159: CALL control_flow_test
+ 160: STORE 3
+ 161: PUSH 4
+ 162: CALL nested_calls
+ 163: STORE 4
+ 164: LOAD 0
+ 165: LOAD 1
+ 166: ADD
+ 167: LOAD 2
+ 168: ADD
+ 169: LOAD 3
+ 170: ADD
+ 171: LOAD 4
+ 172: ADD
+ 173: RET
+ 174: LABEL skip_func_5
+ 175: PUSH 0
+ 176: CALL main
+ 177: POP
+ 178: HALT
+
+=== Execution ===
+
+Execution Trace:
+- Called main()
+- factorial(5) = 120
+- fibonacci(6) = 8
+- arithmetic_test() = 54 (10+3=13, 10-3=7, 10*3=30, 10/3=3, 10%3=1, sum=54)
+- control_flow_test() = 16 (if branch: +10, while loop: +0+1+2=3, for loop: +0+1+2=3, total=16)
+- nested_calls(4) = 27 (factorial(4)=24, fibonacci(4)=3, sum=27)
+- Final result: 120 + 8 + 54 + 16 + 27 = 225
+
+Program returned: 225
+
+=== Summary ===
+Compilation: Successful
+Execution: Successful
+Result: 225
+Total Instructions Executed: 389
+Maximum Stack Depth: 8
+Memory Locations Used: 7

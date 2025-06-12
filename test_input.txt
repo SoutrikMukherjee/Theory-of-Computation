@@ -1,0 +1,88 @@
+// Test program demonstrating SimpleLang features
+// This program calculates factorial and fibonacci numbers
+
+// Factorial function using recursion
+int factorial(int n) {
+    if (n <= 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+// Fibonacci function using recursion
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+
+// Test arithmetic operations
+int arithmetic_test() {
+    int a = 10;
+    int b = 3;
+    int sum = a + b;
+    int diff = a - b;
+    int prod = a * b;
+    int quot = a / b;
+    int rem = a % b;
+    
+    return sum + diff + prod + quot + rem;  // 13 + 7 + 30 + 3 + 1 = 54
+}
+
+// Test control flow
+int control_flow_test() {
+    int result = 0;
+    
+    // Test if-else
+    int x = 5;
+    if (x > 3) {
+        result = result + 10;
+    } else {
+        result = result + 5;
+    }
+    
+    // Test while loop
+    int i = 0;
+    while (i < 3) {
+        result = result + i;
+        i = i + 1;
+    }
+    
+    // Test for loop
+    for (int j = 0; j < 3; j = j + 1) {
+        result = result + j;
+    }
+    
+    return result;  // 10 + 0 + 1 + 2 + 0 + 1 + 2 = 16
+}
+
+// Test nested function calls
+int nested_calls(int n) {
+    int f = factorial(n);
+    int fib = fibonacci(n);
+    return f + fib;
+}
+
+// Main function
+int main() {
+    // Test factorial
+    int fact5 = factorial(5);  // 120
+    
+    // Test fibonacci
+    int fib6 = fibonacci(6);   // 8
+    
+    // Test arithmetic
+    int arith = arithmetic_test();  // 54
+    
+    // Test control flow
+    int flow = control_flow_test();  // 16
+    
+    // Test nested calls
+    int nested = nested_calls(4);  // 24 + 3 = 27
+    
+    // Return sum of all tests
+    return fact5 + fib6 + arith + flow + nested;  // 120 + 8 + 54 + 16 + 27 = 225
+}
